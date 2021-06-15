@@ -13,7 +13,12 @@ function App() {
   return (
     <div>
       <button
-        style={{ backgroundColor: buttonColor }}
+        style={{
+          backgroundColor: buttonColor,
+          color: 'white',
+          fontWeight: '600',
+          minWidth: '150px',
+        }}
         onClick={handleButtonClick}
       >
         Change to {newButtonColor}
