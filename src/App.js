@@ -31,7 +31,9 @@ function App() {
       </button>
       <input
         type="checkbox"
-        checked={checked}
+        id="enable-button-checkbox"
+        defaultChecked={checked}
+        aria-checked={checked}
         onChange={handleCheckboxChange}
       />
     </div>
