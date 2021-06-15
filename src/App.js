@@ -4,10 +4,17 @@ import './App.css';
 
 function App() {
   const [buttonColor, setButtonColor] = useState('red');
+  const [checked, setChecked] = useState(false);
   const newButtonColor = buttonColor === 'red' ? 'blue' : 'red';
   const handleButtonClick = (e) => {
     e.preventDefault();
     setButtonColor(newButtonColor);
+  };
+
+  const handleCheckboxChange = () => {
+    setChecked((prevChecked) => {
+      return !prevChecked;
+    });
   };
 
   return (
@@ -16,13 +23,17 @@ function App() {
         style={{
           backgroundColor: buttonColor,
           color: 'white',
-          fontWeight: '600',
-          minWidth: '150px',
         }}
         onClick={handleButtonClick}
+        disabled={checked}
       >
         Change to {newButtonColor}
       </button>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={handleCheckboxChange}
+      />
     </div>
   );
 }
