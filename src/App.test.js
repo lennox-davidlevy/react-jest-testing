@@ -3,22 +3,28 @@ import userEvent from '@testing-library/user-event';
 import App, { replaceCamelWithSpaces } from './App';
 test('button has correct initial color', () => {
   render(<App />);
-  const colorButton = screen.getByRole('button', { name: 'Change to blue' });
-  expect(colorButton).toHaveStyle({ backgroundColor: 'red' });
+  const colorButton = screen.getByRole('button', {
+    name: 'Change to Midnight Blue',
+  });
+  expect(colorButton).toHaveStyle({ backgroundColor: 'MediumVioletRed' });
 });
 
 test('button color should change when clicked', () => {
   render(<App />);
-  const colorButton = screen.getByRole('button', { name: 'Change to blue' });
+  const colorButton = screen.getByRole('button', {
+    name: 'Change to Midnight Blue',
+  });
   fireEvent.click(colorButton);
 
-  expect(colorButton).toHaveStyle({ backgroundColor: 'blue' });
-  expect(colorButton.textContent).toBe('Change to red');
+  expect(colorButton).toHaveStyle({ backgroundColor: 'MidnightBlue' });
+  expect(colorButton.textContent).toBe('Change to Medium Violet Red');
 });
 
 test('button starts enabled, and the checkbox starts disabled', () => {
   render(<App />);
-  const colorButton = screen.getByRole('button', { name: 'Change to blue' });
+  const colorButton = screen.getByRole('button', {
+    name: 'Change to Midnight Blue',
+  });
   expect(colorButton).toBeEnabled();
 
   const checkBox = screen.getByRole('checkbox', { name: 'Disable button' });
@@ -27,7 +33,9 @@ test('button starts enabled, and the checkbox starts disabled', () => {
 
 test('after checkbox is checked, button should be disabled, and then clicked again, button should be enabled', () => {
   render(<App />);
-  const colorButton = screen.getByRole('button', { name: 'Change to blue' });
+  const colorButton = screen.getByRole('button', {
+    name: 'Change to Midnight Blue',
+  });
   const checkBox = screen.getByRole('checkbox', { name: 'Disable button' });
 
   userEvent.click(checkBox);
@@ -36,7 +44,7 @@ test('after checkbox is checked, button should be disabled, and then clicked aga
 
   userEvent.click(checkBox);
   expect(colorButton).toBeEnabled();
-  expect(colorButton).toHaveStyle({ backgroundColor: 'red' });
+  expect(colorButton).toHaveStyle({ backgroundColor: 'MediumVioletRed' });
 });
 
 describe('spaces before camel-case capital letters', () => {
